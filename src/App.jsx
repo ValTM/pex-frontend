@@ -13,7 +13,6 @@ const App = () => {
   return (
     <div className="max-w-6xl m-auto text-center p-2">
       <Typography variant="h1">Counters</Typography>
-      {myuuid}
       <div className="border-2 rounded-md p-3 mb-5">
         {!showInput && (
           <Button variant="contained" onClick={() => setShowInput(!showInput)}>
