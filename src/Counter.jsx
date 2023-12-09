@@ -45,55 +45,53 @@ export const Counter = ({ index, name, uuid }) => {
       >
         <Alert severity="error">{snackError}</Alert>
       </Snackbar>
-      <Typography variant="h5">
-        {/*escape the double quotes*/}
-        {`Counter "`}
-        {name}
-        {`"`}
+      <Typography variant="h5" className="truncate max-w-[45%]">
+        <Tooltip title={name}>
+          {/*escape the double quotes*/}
+          {`Counter "${name}"`}
+        </Tooltip>
       </Typography>
       <div className="flex gap-2 pl-5">
         <Typography variant="h5">{count}</Typography>
-        <div>
-          <Tooltip title="Increment counter">
-            <Button
-              onClick={async () => {
-                try {
-                  setCount(await increment(name, uuid));
-                } catch (e) {
-                  handleServiceError(e);
-                }
-              }}
-            >
-              <KeyboardArrowUp />
-            </Button>
-          </Tooltip>
-          <Tooltip title="Decrement counter">
-            <Button
-              onClick={async () => {
-                try {
-                  setCount(await decrement(name, uuid));
-                } catch (e) {
-                  handleServiceError(e);
-                }
-              }}
-            >
-              <KeyboardArrowDown />
-            </Button>
-          </Tooltip>
-          <Tooltip title="Reset counter">
-            <Button
-              onClick={async () => {
-                try {
-                  setCount(await reset(name, uuid));
-                } catch (e) {
-                  handleServiceError(e);
-                }
-              }}
-            >
-              <RestartAlt />
-            </Button>
-          </Tooltip>
-        </div>
+        <Tooltip title="Increment counter">
+          <Button
+            onClick={async () => {
+              try {
+                setCount(await increment(name, uuid));
+              } catch (e) {
+                handleServiceError(e);
+              }
+            }}
+          >
+            <KeyboardArrowUp />
+          </Button>
+        </Tooltip>
+        <Tooltip title="Decrement counter">
+          <Button
+            onClick={async () => {
+              try {
+                setCount(await decrement(name, uuid));
+              } catch (e) {
+                handleServiceError(e);
+              }
+            }}
+          >
+            <KeyboardArrowDown />
+          </Button>
+        </Tooltip>
+        <Tooltip title="Reset counter">
+          <Button
+            onClick={async () => {
+              try {
+                setCount(await reset(name, uuid));
+              } catch (e) {
+                handleServiceError(e);
+              }
+            }}
+          >
+            <RestartAlt />
+          </Button>
+        </Tooltip>
       </div>
     </div>
   );

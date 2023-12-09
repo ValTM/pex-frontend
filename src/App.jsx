@@ -11,7 +11,7 @@ const App = () => {
   const [counters, setCounters] = useState([]);
   const inputRef = useRef('');
   return (
-    <div className="max-w-6xl m-auto text-center p-2">
+    <div className="max-w-6xl min-w-[800px] m-auto text-center p-2">
       <Typography variant="h1">Counters</Typography>
       <div className="border-2 rounded-md p-3 mb-5 mt-10">
         {!showInput && (
