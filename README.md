@@ -1,8 +1,20 @@
-# React + Vite
+# Counter app frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+Example frontend for a counter task. 
+The counters can increment, decrement and reset.
+Each browser tab identifies itself with a UUID, so counters from one tab can not interfere with counters from a different tab.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Running
+
+To run a dev server:
+
+```bash
+yarn install
+yarn dev
+```
+To build:
+```bash
+yarn build
+```
