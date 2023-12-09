@@ -1,4 +1,4 @@
-import { Button, Snackbar, Tooltip, Typography } from '@mui/material';
+import { Alert, Button, Snackbar, Tooltip, Typography } from '@mui/material';
 import {
   KeyboardArrowDown,
   KeyboardArrowUp,
@@ -7,9 +7,25 @@ import {
 import { decrement, increment, reset } from './service/service.js';
 import React, { useState } from 'react';
 
+const defaultError = 'Error when changing counter value';
+
 export const Counter = ({ index, name, uuid }) => {
   const [count, setCount] = useState(0);
   const [snackOpen, setSnackOpen] = useState(false);
+  const [snackError, setSnackError] = useState(defaultError);
+
+  const handleServiceError = (e) => {
+    if (e.isAxiosError) {
+      if (e.code === 'ERR_NETWORK') {
+        setSnackError('Network error');
+      } else {
+        const { error } = e.response.data;
+        setSnackError(error[0].toUpperCase() + error.substring(1));
+      }
+    }
+    setSnackOpen(true);
+  };
+
   return (
     <div
       className={`flex p-2 justify-between border-b-2 ${
@@ -22,8 +38,13 @@ export const Counter = ({ index, name, uuid }) => {
           horizontal: 'right',
         }}
         open={snackOpen}
-        message="I love snacks"
-      />
+        autoHideDuration={5000}
+        onClose={() => {
+          setSnackOpen(false);
+        }}
+      >
+        <Alert severity="error">{snackError}</Alert>
+      </Snackbar>
       <Typography variant="h5">
         {/*escape the double quotes*/}
         {`Counter "`}
@@ -39,7 +60,7 @@ export const Counter = ({ index, name, uuid }) => {
                 try {
                   setCount(await increment(name, uuid));
                 } catch (e) {
-                  //TODO show counter error
+                  handleServiceError(e);
                 }
               }}
             >
@@ -52,7 +73,7 @@ export const Counter = ({ index, name, uuid }) => {
                 try {
                   setCount(await decrement(name, uuid));
                 } catch (e) {
-                  //TODO show counter error
+                  handleServiceError(e);
                 }
               }}
             >
@@ -65,7 +86,7 @@ export const Counter = ({ index, name, uuid }) => {
                 try {
                   setCount(await reset(name, uuid));
                 } catch (e) {
-                  //TODO show counter error
+                  handleServiceError(e);
                 }
               }}
             >
