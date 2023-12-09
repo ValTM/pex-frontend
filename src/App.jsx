@@ -53,7 +53,15 @@ const App = () => {
               >
                 Add counter
               </Button>
-              <Button onClick={() => setShowInput(false)}>Cancel</Button>
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  setInputError('');
+                  setShowInput(false);
+                }}
+              >
+                Cancel
+              </Button>
             </Box>
             <p className="text-red-600">{inputError}</p>
           </>
