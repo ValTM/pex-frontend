@@ -51,7 +51,7 @@ export const Counter = ({ index, name, uuid }) => {
         {name}
         {`"`}
       </Typography>
-      <div className="flex gap-2">
+      <div className="flex gap-2 pl-5">
         <Typography variant="h5">{count}</Typography>
         <div>
           <Tooltip title="Increment counter">
