@@ -30,3 +30,9 @@ To build:
 ```bash
 yarn build
 ```
+
+## Next steps
+
+- better error handling
+- way to identify the tab, instead of random UUID
+- ability to delete a counter
