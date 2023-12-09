@@ -15,7 +15,11 @@ const App = () => {
       <Typography variant="h1">Counters</Typography>
       <div className="border-2 rounded-md p-3 mb-5 mt-10">
         {!showInput && (
-          <Button variant="contained" onClick={() => setShowInput(!showInput)}>
+          <Button
+            className="min-h-[56px]"
+            variant="contained"
+            onClick={() => setShowInput(!showInput)}
+          >
             Add new counter
           </Button>
         )}
@@ -24,7 +28,7 @@ const App = () => {
             <Box component="form" className="flex gap-3 justify-center">
               <TextField
                 required
-                variant="standard"
+                variant="outlined"
                 label="Counter name"
                 inputRef={inputRef}
               />
